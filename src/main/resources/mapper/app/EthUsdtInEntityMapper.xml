@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chain.modules.app.dao.EthUsdtInEntityMapper">
+  <resultMap id="BaseResultMap" type="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="txid" jdbcType="VARCHAR" property="txid" />
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="confirmations" jdbcType="VARCHAR" property="confirmations" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="blockhash" jdbcType="VARCHAR" property="blockhash" />
+    <result column="blockindex" jdbcType="VARCHAR" property="blockindex" />
+    <result column="blocktime" jdbcType="VARCHAR" property="blocktime" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="timereceived" jdbcType="VARCHAR" property="timereceived" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_send" jdbcType="CHAR" property="isSend" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, txid, amount, confirmations, account, label, address, blockhash, blockindex, 
+    blocktime, time, timereceived, date, block, status, is_send
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    insert into eth_usdt_in (id, txid, amount, 
+      confirmations, account, label, 
+      address, blockhash, blockindex, 
+      blocktime, time, timereceived, 
+      date, block, status, 
+      is_send)
+    values (#{id,jdbcType=INTEGER}, #{txid,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, 
+      #{confirmations,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{blockhash,jdbcType=VARCHAR}, #{blockindex,jdbcType=VARCHAR}, 
+      #{blocktime,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, #{timereceived,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{block,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isSend,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    insert into eth_usdt_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="txid != null">
+        txid,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="confirmations != null">
+        confirmations,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="blockhash != null">
+        blockhash,
+      </if>
+      <if test="blockindex != null">
+        blockindex,
+      </if>
+      <if test="blocktime != null">
+        blocktime,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="timereceived != null">
+        timereceived,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="block != null">
+        block,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isSend != null">
+        is_send,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="txid != null">
+        #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        #{isSend,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    update eth_usdt_in
+    <set>
+      <if test="txid != null">
+        txid = #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        confirmations = #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        blockhash = #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        blockindex = #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        blocktime = #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        timereceived = #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        block = #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        is_send = #{isSend,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    update eth_usdt_in
+    set txid = #{txid,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      confirmations = #{confirmations,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      blockhash = #{blockhash,jdbcType=VARCHAR},
+      blockindex = #{blockindex,jdbcType=VARCHAR},
+      blocktime = #{blocktime,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      timereceived = #{timereceived,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      block = #{block,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="txid" jdbcType="VARCHAR" property="txid" />
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="confirmations" jdbcType="VARCHAR" property="confirmations" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="blockhash" jdbcType="VARCHAR" property="blockhash" />
+    <result column="blockindex" jdbcType="VARCHAR" property="blockindex" />
+    <result column="blocktime" jdbcType="VARCHAR" property="blocktime" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="timereceived" jdbcType="VARCHAR" property="timereceived" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_send" jdbcType="CHAR" property="isSend" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, txid, amount, confirmations, account, label, address, blockhash, blockindex, 
+    blocktime, time, timereceived, date, block, status, is_send
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    insert into eth_usdt_in (id, txid, amount, 
+      confirmations, account, label, 
+      address, blockhash, blockindex, 
+      blocktime, time, timereceived, 
+      date, block, status, 
+      is_send)
+    values (#{id,jdbcType=INTEGER}, #{txid,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, 
+      #{confirmations,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{blockhash,jdbcType=VARCHAR}, #{blockindex,jdbcType=VARCHAR}, 
+      #{blocktime,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, #{timereceived,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{block,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isSend,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    insert into eth_usdt_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="txid != null">
+        txid,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="confirmations != null">
+        confirmations,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="blockhash != null">
+        blockhash,
+      </if>
+      <if test="blockindex != null">
+        blockindex,
+      </if>
+      <if test="blocktime != null">
+        blocktime,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="timereceived != null">
+        timereceived,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="block != null">
+        block,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isSend != null">
+        is_send,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="txid != null">
+        #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        #{isSend,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    update eth_usdt_in
+    <set>
+      <if test="txid != null">
+        txid = #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        confirmations = #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        blockhash = #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        blockindex = #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        blocktime = #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        timereceived = #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        block = #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        is_send = #{isSend,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chain.modules.app.entity.omni.EthUsdtInEntity">
+    update eth_usdt_in
+    set txid = #{txid,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      confirmations = #{confirmations,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      blockhash = #{blockhash,jdbcType=VARCHAR},
+      blockindex = #{blockindex,jdbcType=VARCHAR},
+      blocktime = #{blocktime,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      timereceived = #{timereceived,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      block = #{block,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.chain.modules.app.omni.entity.EthUsdtInEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="txid" jdbcType="VARCHAR" property="txid" />
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="confirmations" jdbcType="VARCHAR" property="confirmations" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="blockhash" jdbcType="VARCHAR" property="blockhash" />
+    <result column="blockindex" jdbcType="VARCHAR" property="blockindex" />
+    <result column="blocktime" jdbcType="VARCHAR" property="blocktime" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="timereceived" jdbcType="VARCHAR" property="timereceived" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_send" jdbcType="CHAR" property="isSend" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, txid, amount, confirmations, account, label, address, blockhash, blockindex, 
+    blocktime, time, timereceived, date, block, status, is_send
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chain.modules.app.omni.entity.EthUsdtInEntity">
+    insert into eth_usdt_in (id, txid, amount, 
+      confirmations, account, label, 
+      address, blockhash, blockindex, 
+      blocktime, time, timereceived, 
+      date, block, status, 
+      is_send)
+    values (#{id,jdbcType=INTEGER}, #{txid,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, 
+      #{confirmations,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{blockhash,jdbcType=VARCHAR}, #{blockindex,jdbcType=VARCHAR}, 
+      #{blocktime,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, #{timereceived,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{block,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isSend,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chain.modules.app.omni.entity.EthUsdtInEntity">
+    insert into eth_usdt_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="txid != null">
+        txid,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="confirmations != null">
+        confirmations,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="blockhash != null">
+        blockhash,
+      </if>
+      <if test="blockindex != null">
+        blockindex,
+      </if>
+      <if test="blocktime != null">
+        blocktime,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="timereceived != null">
+        timereceived,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="block != null">
+        block,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isSend != null">
+        is_send,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="txid != null">
+        #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        #{isSend,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chain.modules.app.omni.entity.EthUsdtInEntity">
+    update eth_usdt_in
+    <set>
+      <if test="txid != null">
+        txid = #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        confirmations = #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        blockhash = #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        blockindex = #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        blocktime = #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        timereceived = #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        block = #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        is_send = #{isSend,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chain.modules.app.omni.entity.EthUsdtInEntity">
+    update eth_usdt_in
+    set txid = #{txid,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      confirmations = #{confirmations,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      blockhash = #{blockhash,jdbcType=VARCHAR},
+      blockindex = #{blockindex,jdbcType=VARCHAR},
+      blocktime = #{blocktime,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      timereceived = #{timereceived,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      block = #{block,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.chain.modules.app.entity.EthUsdtInEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="txid" jdbcType="VARCHAR" property="txid" />
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="confirmations" jdbcType="VARCHAR" property="confirmations" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="blockhash" jdbcType="VARCHAR" property="blockhash" />
+    <result column="blockindex" jdbcType="VARCHAR" property="blockindex" />
+    <result column="blocktime" jdbcType="VARCHAR" property="blocktime" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="timereceived" jdbcType="VARCHAR" property="timereceived" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_send" jdbcType="CHAR" property="isSend" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, txid, amount, confirmations, account, label, address, blockhash, blockindex, 
+    blocktime, time, timereceived, date, block, status, is_send
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eth_usdt_in
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chain.modules.app.entity.EthUsdtInEntity">
+    insert into eth_usdt_in (id, txid, amount, 
+      confirmations, account, label, 
+      address, blockhash, blockindex, 
+      blocktime, time, timereceived, 
+      date, block, status, 
+      is_send)
+    values (#{id,jdbcType=INTEGER}, #{txid,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, 
+      #{confirmations,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{blockhash,jdbcType=VARCHAR}, #{blockindex,jdbcType=VARCHAR}, 
+      #{blocktime,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, #{timereceived,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{block,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isSend,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chain.modules.app.entity.EthUsdtInEntity">
+    insert into eth_usdt_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="txid != null">
+        txid,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="confirmations != null">
+        confirmations,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="blockhash != null">
+        blockhash,
+      </if>
+      <if test="blockindex != null">
+        blockindex,
+      </if>
+      <if test="blocktime != null">
+        blocktime,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="timereceived != null">
+        timereceived,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="block != null">
+        block,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isSend != null">
+        is_send,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="txid != null">
+        #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        #{isSend,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chain.modules.app.entity.EthUsdtInEntity">
+    update eth_usdt_in
+    <set>
+      <if test="txid != null">
+        txid = #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmations != null">
+        confirmations = #{confirmations,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blockhash != null">
+        blockhash = #{blockhash,jdbcType=VARCHAR},
+      </if>
+      <if test="blockindex != null">
+        blockindex = #{blockindex,jdbcType=VARCHAR},
+      </if>
+      <if test="blocktime != null">
+        blocktime = #{blocktime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="timereceived != null">
+        timereceived = #{timereceived,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        block = #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        is_send = #{isSend,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chain.modules.app.entity.EthUsdtInEntity">
+    update eth_usdt_in
+    set txid = #{txid,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      confirmations = #{confirmations,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      blockhash = #{blockhash,jdbcType=VARCHAR},
+      blockindex = #{blockindex,jdbcType=VARCHAR},
+      blocktime = #{blocktime,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      timereceived = #{timereceived,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      block = #{block,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
